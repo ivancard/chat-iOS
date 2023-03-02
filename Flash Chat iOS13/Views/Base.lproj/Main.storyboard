@@ -153,14 +153,23 @@
                                     <constraint firstItem="e3X-Pg-CWg" firstAttribute="top" secondItem="hLb-P9-NkF" secondAttribute="bottom" constant="31" id="vii-xD-7p6"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yqr-QZ-j7I">
+                                <rect key="frame" x="22" y="368" width="370" height="0.0"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" name="logo"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="stz-qy-NwU"/>
                         <color key="backgroundColor" name="background"/>
                         <constraints>
                             <constraint firstItem="Scg-da-zi8" firstAttribute="trailing" secondItem="stz-qy-NwU" secondAttribute="trailing" id="3Fk-Xo-DV8"/>
+                            <constraint firstItem="stz-qy-NwU" firstAttribute="trailing" secondItem="Yqr-QZ-j7I" secondAttribute="trailing" constant="22" id="Fft-bi-mgo"/>
                             <constraint firstItem="j5s-Lc-WfT" firstAttribute="trailing" secondItem="stz-qy-NwU" secondAttribute="trailing" id="Tq9-EG-2wo"/>
                             <constraint firstItem="Scg-da-zi8" firstAttribute="leading" secondItem="stz-qy-NwU" secondAttribute="leading" id="Ub1-7q-3QS"/>
+                            <constraint firstItem="Yqr-QZ-j7I" firstAttribute="top" secondItem="j5s-Lc-WfT" secondAttribute="bottom" constant="22" id="ddU-kn-qC3"/>
                             <constraint firstItem="Scg-da-zi8" firstAttribute="top" secondItem="stz-qy-NwU" secondAttribute="top" id="oh4-tH-9d1"/>
+                            <constraint firstItem="Yqr-QZ-j7I" firstAttribute="leading" secondItem="stz-qy-NwU" secondAttribute="leading" constant="22" id="oke-xt-jrq"/>
                             <constraint firstItem="j5s-Lc-WfT" firstAttribute="leading" secondItem="stz-qy-NwU" secondAttribute="leading" id="uog-qO-Id1"/>
                             <constraint firstItem="j5s-Lc-WfT" firstAttribute="top" secondItem="Scg-da-zi8" secondAttribute="bottom" constant="-100" id="wib-t6-dnB"/>
                         </constraints>
@@ -168,6 +177,7 @@
                     <navigationItem key="navigationItem" id="R5c-Pz-zuN"/>
                     <connections>
                         <outlet property="emailTextfield" destination="u72-XV-6FN" id="Nfc-8N-TNr"/>
+                        <outlet property="infoLabel" destination="Yqr-QZ-j7I" id="5xp-0e-A4u"/>
                         <outlet property="passwordTextfield" destination="hLb-P9-NkF" id="uaM-fo-m8M"/>
                         <segue destination="lwd-AH-u8E" kind="show" identifier="RegisterToChat" id="ZQc-sI-qkF"/>
                     </connections>
@@ -365,9 +375,7 @@
         </scene>
     </scenes>
     <designables>
-        <designable name="y7D-jv-BlJ">
-            <size key="intrinsicContentSize" width="307.5" height="60"/>
-        </designable>
+        <designable name="y7D-jv-BlJ"/>
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="ZQc-sI-qkF"/>
