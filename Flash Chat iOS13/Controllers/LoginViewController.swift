@@ -7,14 +7,37 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
+    @IBOutlet weak var infoLabel: UILabel!
     
 
     @IBAction func loginPressed(_ sender: UIButton) {
+        if let email = emailTextfield.text,
+           let password = passwordTextfield.text{
+            Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+                if let error = error {
+                    self.infoLabel.text = error.localizedDescription
+                    self.animate()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        self.infoLabel.text = ""
+                        self.animate()
+                    }
+                } else {
+                    self.performSegue(withIdentifier: Constants.loginSegue, sender: self)
+
+                }
+            }
+        }
     }
-    
+
+    func animate(){
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
+    }
 }
