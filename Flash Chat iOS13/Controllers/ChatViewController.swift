@@ -42,7 +42,11 @@ class ChatViewController: UIViewController {
                            let body = data[Constants.FStore.bodyField] as? String {
                             let newMessage = Message(sender: sender, body: body)
                             self.messages.append(newMessage)
-                            self.tableView.reloadData()
+                            DispatchQueue.main.async {
+                                self.tableView.reloadData()
+                                let indexPath = IndexPath(row: self.messages.count - 1, section: 0)
+                                self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+                            }
                         }
                     }
                 }
@@ -64,12 +68,11 @@ class ChatViewController: UIViewController {
                     } else {
                         print("Success saved data")
                         DispatchQueue.main.async {
-                            self.tableView.reloadData()
+                            self.messageTextfield.text = ""
                         }
                     }
                 }
         }
-        messageTextfield.text = ""
     }
     
     @IBAction func logOutAction(_ sender: UIBarButtonItem) {
@@ -93,8 +96,22 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let message = messages[indexPath.row]
+
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier, for: indexPath) as! MessageTableViewCell
-        cell.messageLabel.text = messages[indexPath.row].body
+        cell.messageLabel.text = message.body
+
+        if message.sender == Auth.auth().currentUser?.email {
+            cell.otherProfilePicture.isHidden = true
+            cell.profilePicture.isHidden = false
+//            cell.messageBubble.backgroundColor = UIColor(named: "Primary")
+        } else {
+            cell.otherProfilePicture.isHidden = false
+            cell.profilePicture.isHidden = true
+//            cell.messageBubble.backgroundColor = UIColor(named: "primary")
+        }
+
+
         return cell
     }
 
