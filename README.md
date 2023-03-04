@@ -6,3 +6,7 @@ A chat app using firebase
 - FireStore implemented
 
 ![app image](Documentation/app.png)
+
+## App in action
+
+![app gif](Documentation/appGif.gif)
